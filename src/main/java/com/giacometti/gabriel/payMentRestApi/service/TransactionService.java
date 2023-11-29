@@ -6,13 +6,14 @@ import com.giacometti.gabriel.payMentRestApi.model.user.UserTypeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 @Service
-public class PaymentService {
+public class TransactionService {
     @Autowired
     private UserRepository userRepository;
-    public void trasaction(User payer, User receiver, BigInteger value) throws RuntimeException{
+    public void trasaction(User payer, User receiver, BigDecimal value) throws RuntimeException{
         if(payer.getType() == UserTypeEnum.COMUM) throw new RuntimeException("Only shopkeepers can make transactions");
         if(payer.getBalance().compareTo(value) <0) throw new RuntimeException("Payer do not have enough money");
 
@@ -21,7 +22,5 @@ public class PaymentService {
 
     }
 
-    public void save(User user){
-        userRepository.save(user);
-    }
+
 }

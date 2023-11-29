@@ -1,16 +1,20 @@
 package com.giacometti.gabriel.payMentRestApi.model.user;
 
-import com.giacometti.gabriel.payMentRestApi.model.user.UserTypeEnum;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
+
 
 @Table(name ="users")
 @Setter
 @Getter
 @Entity(name = "User")
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,10 +27,10 @@ public class User {
     private String senha;
     @Enumerated(EnumType.STRING)
     private UserTypeEnum type;
-    private BigInteger balance;
+    private BigDecimal balance;
 
 
-    public User (DataUserSave data){
+    public User (UserDataSave data){
         this.nome = data.nome();
         this.cpf = data.cpf();
         this.email = data.email();
