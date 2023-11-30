@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.math.BigDecimal;
 
 
@@ -28,7 +27,7 @@ public class TransactionController {
         var payerUser = userRepository.getReferenceById(idPayer);
         var receiverUser = userRepository.getReferenceById(idReceiver);
 
-        transactionService.trasaction(payerUser,receiverUser, value);
+        transactionService.transaction(payerUser,receiverUser, value);
 
         return ResponseEntity.ok(new DTOTransaction(payerUser,receiverUser,value));
     }
