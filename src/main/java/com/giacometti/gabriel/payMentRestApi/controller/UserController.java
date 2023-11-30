@@ -1,15 +1,20 @@
 package com.giacometti.gabriel.payMentRestApi.controller;
 
+import com.giacometti.gabriel.payMentRestApi.DTO.DTOListUser;
 import com.giacometti.gabriel.payMentRestApi.model.user.UserDataSave;
 import com.giacometti.gabriel.payMentRestApi.model.user.User;
 import com.giacometti.gabriel.payMentRestApi.model.user.UserDetailResponse;
 import com.giacometti.gabriel.payMentRestApi.model.user.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+
 
 @RequestMapping("user")
 @RestController
@@ -25,6 +30,12 @@ public class UserController {
         var uri = uriBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri();
         return ResponseEntity.created(uri).body(new UserDetailResponse(user));
     }
+
+    @GetMapping
+    public ResponseEntity<Page> listar(@PageableDefault(size= 10) Pageable pageable) {
+        var page = userRepository.findAll(pageable).map(DTOListUser::new);
+        return ResponseEntity.ok(page);
+     }
     @GetMapping("/{id}")
     public ResponseEntity detailUser(@PathVariable  Long id){
         var user = userRepository.getReferenceById(id);
