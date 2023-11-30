@@ -5,6 +5,6 @@ create table users(
     cpf varchar(30) not null unique,
     senha varchar(100)not null,
     type varchar(50) not null,
-    balance BigInt(20) not null,
+    balance decimal(7,2) not null,
     primary key(id)
 );
