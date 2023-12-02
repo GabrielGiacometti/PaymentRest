@@ -10,7 +10,6 @@ import java.math.BigInteger;
 public record UserDataSave(
         @NotBlank
         String nome,
-
         @NotBlank
         String cpf,
         @NotBlank
