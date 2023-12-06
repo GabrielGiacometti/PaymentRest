@@ -1,16 +1,15 @@
 package com.giacometti.gabriel.payMentRestApi.service;
 
+import com.giacometti.gabriel.payMentRestApi.DTO.transaction.MakeTransactionDto;
 import com.giacometti.gabriel.payMentRestApi.decorator.TransactionValidation;
 import com.giacometti.gabriel.payMentRestApi.decorator.TypeValidationDecorator;
 import com.giacometti.gabriel.payMentRestApi.decorator.UnderPaymentDecorator;
 import com.giacometti.gabriel.payMentRestApi.model.transaction.Transaction;
 import com.giacometti.gabriel.payMentRestApi.model.transaction.TransactionRepository;
-import com.giacometti.gabriel.payMentRestApi.model.user.User;
 import com.giacometti.gabriel.payMentRestApi.model.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 
 @Service
 public class TransactionService {
@@ -21,7 +20,11 @@ public class TransactionService {
     private TransactionRepository transactionRepository;
 
     private TransactionValidation transactionValidation;
-    public Transaction transaction(User payer, User receiver, BigDecimal value) throws RuntimeException{
+    public Transaction transaction(MakeTransactionDto data) throws RuntimeException{
+        var payer = userRepository.getReferenceById(data.payer());
+        var receiver = userRepository.getReferenceById(data.receiver());
+        var value = data.value();
+
         transactionValidation = new TypeValidationDecorator(payer,
                                         new UnderPaymentDecorator(payer,value));
         transactionValidation.validate();

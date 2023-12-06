@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Table(name = "transactions")
-@Entity(name ="Transaction")
+@Entity
 @Getter
 @RequiredArgsConstructor
 @NoArgsConstructor
@@ -18,14 +18,15 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NonNull
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "payer")
+    @NonNull
     private User payer;
 
-    @NonNull
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "receiver")
+    @NonNull
     private User receiver;
 
     @NonNull

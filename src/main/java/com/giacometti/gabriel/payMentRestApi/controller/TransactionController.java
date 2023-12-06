@@ -1,7 +1,7 @@
 package com.giacometti.gabriel.payMentRestApi.controller;
 
-import com.giacometti.gabriel.payMentRestApi.DTO.DTOResponseTransaction;
-import com.giacometti.gabriel.payMentRestApi.DTO.DTOMakeTransaction;
+import com.giacometti.gabriel.payMentRestApi.DTO.transaction.ResponseTransactionDto;
+import com.giacometti.gabriel.payMentRestApi.DTO.transaction.MakeTransactionDto;
 import com.giacometti.gabriel.payMentRestApi.model.transaction.TransactionRepository;
 import com.giacometti.gabriel.payMentRestApi.model.user.UserRepository;
 import com.giacometti.gabriel.payMentRestApi.service.TransactionService;
@@ -25,21 +25,18 @@ public class TransactionController {
 
     @PostMapping()
     @Transactional
-    public ResponseEntity doTransaction(@RequestBody @Valid DTOMakeTransaction data, UriComponentsBuilder uriBuilder){
-        var payerUser = userRepository.getReferenceById(data.payer());
-        var receiverUser = userRepository.getReferenceById(data.receiver());
+    public ResponseEntity doTransaction(@RequestBody @Valid MakeTransactionDto data, UriComponentsBuilder uriBuilder){
+        var transaction = transactionService.transaction(data);
 
-        var transaction = transactionService.transaction(payerUser,receiverUser, data.value());
         var uri = uriBuilder.path("/transaction/{id}").buildAndExpand(transaction.getId()).toUri();
-        return ResponseEntity.created(uri).body(new DTOResponseTransaction(transaction));
-
+        return ResponseEntity.created(uri).body(new ResponseTransactionDto(transaction));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity detailTransaction(@PathVariable Long id){
         var transaction = transactionRepository.findById(id).get();
 
-        return ResponseEntity.ok(new DTOResponseTransaction(transaction));
+        return ResponseEntity.ok(new ResponseTransactionDto(transaction));
     }
 
 }

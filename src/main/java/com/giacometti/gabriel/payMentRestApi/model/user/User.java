@@ -1,5 +1,6 @@
 package com.giacometti.gabriel.payMentRestApi.model.user;
 
+import com.giacometti.gabriel.payMentRestApi.DTO.user.UserDataSaveDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,9 +11,9 @@ import java.math.BigDecimal;
 
 
 @Table(name ="users")
+@Entity
 @Setter
 @Getter
-@Entity(name = "User")
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
@@ -30,7 +31,7 @@ public class User {
     private BigDecimal balance;
 
 
-    public User (UserDataSave data){
+    public User (UserDataSaveDto data){
         this.nome = data.nome();
         this.cpf = data.cpf();
         this.email = data.email();

@@ -1,9 +1,9 @@
 package com.giacometti.gabriel.payMentRestApi.controller;
 
-import com.giacometti.gabriel.payMentRestApi.DTO.DTOListUser;
-import com.giacometti.gabriel.payMentRestApi.model.user.UserDataSave;
+import com.giacometti.gabriel.payMentRestApi.DTO.user.ListUserDto;
+import com.giacometti.gabriel.payMentRestApi.DTO.user.UserDataSaveDto;
 import com.giacometti.gabriel.payMentRestApi.model.user.User;
-import com.giacometti.gabriel.payMentRestApi.model.user.UserDetailResponse;
+import com.giacometti.gabriel.payMentRestApi.DTO.user.UserDetailResponseDto;
 import com.giacometti.gabriel.payMentRestApi.model.user.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,23 +24,23 @@ public class UserController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity saveUser(@RequestBody @Valid UserDataSave data, UriComponentsBuilder uriBuilder){
+    public ResponseEntity saveUser(@RequestBody @Valid UserDataSaveDto data, UriComponentsBuilder uriBuilder){
         var user = new User(data);
         userRepository.save(user);
         var uri = uriBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri();
-        return ResponseEntity.created(uri).body(new UserDetailResponse(user));
+        return ResponseEntity.created(uri).body(new UserDetailResponseDto(user));
     }
 
     @GetMapping
     public ResponseEntity<Page> listar(@PageableDefault(size= 10) Pageable pageable) {
-        var page = userRepository.findAll(pageable).map(DTOListUser::new);
+        var page = userRepository.findAll(pageable).map(ListUserDto::new);
         return ResponseEntity.ok(page);
      }
     @GetMapping("/{id}")
     public ResponseEntity detailUser(@PathVariable  Long id){
         var user = userRepository.getReferenceById(id);
 
-        return ResponseEntity.ok(new UserDetailResponse(user));
+        return ResponseEntity.ok(new UserDetailResponseDto(user));
     }
 
 }
