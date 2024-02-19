@@ -14,7 +14,7 @@ public class TypeValidationDecorator extends DecoratorTrasanctionValidation impl
 
     @Override
     public void validate() throws RuntimeException {
-        if(user.getType().equals(UserTypeEnum.COMUM)) throw new RuntimeException("Comum users can not make transactions");
+        if(user.getType().equals(UserTypeEnum.SHOPKEEPER)) throw new RuntimeException("SHOPKEEPER users can not make transactions");
         super.validate();
     }
 }
