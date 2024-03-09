@@ -16,12 +16,11 @@ This guide will provide instructions on how to configure and run the API locally
 
 2. **Run the Docker Container:**
    Execute the newly created Docker container.
-
    
    docker run -p 3308:3306 --name mysqldb -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=paymentapi -e MYSQL_USER=sa -e MYSQL_PASSWORD=1234 -d mysql:5.7
 
 4. **Import the JSON File:**
-   Open a testing tool and import the provided file, InsomniaPaymentAPI, containing all the necessary requests to test the API.
+  Open a test tool and import the provided file, InsomniaPaymentAPI, which contains the following requests: Save Transactions, Detail Transaction, Detail User, List Users, Save User, List Emails.
    
 
 
