@@ -6,16 +6,18 @@ The API has been developed using web development best practices. This included t
 SOLID principles and some design patterns, such as the Decorator pattern in the TRANSACTION class, were used to keep the code organised and easy to maintain. This pattern allows new payment checks to be added without modifying other classes, following the single responsibility principle. This results in a more modular and extensible code.
 
 
-API Configuration and Execution
-This guide will provide instructions on how to configure and run the API locally using Docker.
+## API Configuration and Execution
 
-Clone the Repository:
-Clone your API repository to your local environment.
+This guide will provide instructions on how to configure and run the API locally using Docker and Insomnia.
 
-Run the Docker Container:
-Execute the newly created Docker container.
+1. **Clone the Repository:**
+   Clone your API repository to your local environment.
 
-Import the JSON File:
-Open a testing tool and import the provided file containing all the necessary requests to test the API.
+2. **Run the Docker Container:**
+   Execute the newly created Docker container.
+
+3. **Import the JSON File:**
+   Open a testing tool and import the provided file containing all the necessary requests to test the API.
+
 
 
