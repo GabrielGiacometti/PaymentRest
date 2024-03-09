@@ -12,11 +12,13 @@ This guide will provide instructions on how to configure and run the API locally
 
 1. **Clone the Repository:**
    Clone your API repository to your local environment.
+   https://github.com/GabrielGiacometti/PaymentRest.git
 
 2. **Run the Docker Container:**
    Execute the newly created Docker container.
+   docker run -p 3308:3306 --name mysqldb -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=paymentapi -e MYSQL_USER=sa -e MYSQL_PASSWORD=1234 -d mysql:5.7
 
-3. **Import the JSON File:**
+4. **Import the JSON File:**
    Open a testing tool and import the provided file containing all the necessary requests to test the API.
 
 
