@@ -32,14 +32,20 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<Page> listar(@PageableDefault(size= 10) Pageable pageable) {
+    public ResponseEntity<Page> list(@PageableDefault(size= 10) Pageable pageable) {
         var page = userRepository.findAll(pageable).map(ListUserDto::new);
         return ResponseEntity.ok(page);
-     }
+    }
     @GetMapping("/{id}")
     public ResponseEntity detailUser(@PathVariable  Long id){
         var user = userRepository.getReferenceById(id);
 
+        return ResponseEntity.ok(new UserDetailResponseDto(user));
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteUser(@PathVariable Long id){
+        var user = userRepository.getReferenceById(id);
+        userRepository.delete(user);
         return ResponseEntity.ok(new UserDetailResponseDto(user));
     }
 

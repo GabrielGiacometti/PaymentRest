@@ -37,8 +37,8 @@ public class TransactionService {
         receiver.setBalance(receiver.getBalance().add(value));
 
         var transaction = new Transaction(payer,receiver,value);
-        sendTransactionEmail.send(new Email(payer.getEmail(), receiver.getEmail()).setEmailToReceiver(value));
-        sendTransactionEmail.send(new Email(payer.getEmail(), receiver.getEmail()).setEmailToPayer(value));
+        sendTransactionEmail.send(new Email(receiver.getEmail()).setEmailToReceiver(value, payer.getEmail()));
+        sendTransactionEmail.send(new Email(payer.getEmail()).setEmailToPayer(value, receiver.getEmail()));
         transactionRepository.save(transaction);
 
         return  transaction;

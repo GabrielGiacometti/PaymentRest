@@ -53,7 +53,7 @@ class TransactionServiceTest {
     void dontMakeTrasanctionWithPayerWithoutMoney(){
         //ARRANGE
         BDDMockito.given(userRepository.getReferenceById(makeTransactionDto.payer())).willReturn(payer);
-        BDDMockito.given(payer.getType()).willReturn(UserTypeEnum.SHOPKEEPER);
+        BDDMockito.given(payer.getType()).willReturn(UserTypeEnum.COMUM);
         BDDMockito.given(makeTransactionDto.value()).willReturn(new BigDecimal(500));
         BDDMockito.given(payer.getBalance()).willReturn(new BigDecimal(10));
 

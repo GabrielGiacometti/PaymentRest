@@ -23,11 +23,14 @@ public class Email {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long emailId;
 
-    @NotBlank
+
     @jakarta.validation.constraints.Email
     private String sender = "gabrielhdfg460@gmail.com";
+
     @NotBlank
+    @jakarta.validation.constraints.Email
     private String receiver;
+
 
     @Column(columnDefinition = "TEXT")
     @NotBlank
@@ -36,18 +39,17 @@ public class Email {
     @NotBlank
     private String title;
 
-    @NotBlank
+    @NotNull
     private LocalDateTime sendDateEmail;
     private StatusEmail statusEmail;
 
 
-    public Email(String sender, String receiver){
-        this.sender = sender;
+    public Email(String receiver){
         this.receiver = receiver;
 
     }
 
-    public Email setEmailToPayer(BigDecimal value){
+    public Email setEmailToPayer(BigDecimal value,String receiver){
         this.title = "PAGAMENTO EFETUADO";
 
         this.text= String.format("O pagamento no valor de : %f foi efetuado%n" +
@@ -55,7 +57,7 @@ public class Email {
         return this;
     }
 
-    public Email setEmailToReceiver(BigDecimal value){
+    public Email setEmailToReceiver(BigDecimal value,String sender){
         this.title = "PAGAMENTO RECEBIDO";
 
         this.text= String.format("O pagamento no valor de : %f foi efetuado%n" +

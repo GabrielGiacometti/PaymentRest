@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 public class SendTransactionEmail {
     @Autowired
     private EmailRespository emailRespository;
+
     private Email email;
 
     @Autowired
@@ -31,8 +32,6 @@ public class SendTransactionEmail {
             message.setTo(email.getReceiver());
             message.setSubject(email.getTitle());
             message.setText(email.getText());
-            System.out.println(email.getSender());
-            System.out.println(email.getReceiver());
             emailSender.send(message);
             email.setStatusEmail(StatusEmail.SEND);
 
