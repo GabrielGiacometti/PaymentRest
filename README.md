@@ -19,7 +19,7 @@ This guide will provide instructions on how to configure, run and test the API l
 
 3. **Swagger Setup and Usage:**    
    - *Access Swagger UI*: Open http://localhost:8080/swagger-ui/index.html in your browser to explore and interact with your API.  
-   - *Explore Endpoints*: Discover requests such as "Save Transactions," "Detail Transaction," "Detail User," "List Users," "Save User," and "List Emails."  
+   - *Explore Endpoints*: Discover requests such as "Save Transaction", "Detail Transaction", "Detail User", "List Users", "Save User" and "List Emails".  
    - *Test Functionality*: Utilize Swagger's "Try it out" feature to send requests directly from the UI and observe responses.  
    
 
