@@ -8,7 +8,7 @@ SOLID principles and some design patterns, such as the Decorator pattern in the 
 
 ## API Configuration and Execution
 
-This guide will provide instructions on how to configure and run the API locally using Docker and Swagger.
+This guide will provide instructions on how to configure, run and test the API locally using Docker and Swagger.
 
 1. **Clone the Repository:**    
    - Clone the API repository to your local environment.
