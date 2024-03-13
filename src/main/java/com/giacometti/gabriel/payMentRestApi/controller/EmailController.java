@@ -24,7 +24,7 @@ public class EmailController {
     @Autowired
     private EmailRespository emailRespository;
     @GetMapping
-    @Operation(summary = "Take all emails")
+    @Operation(summary = "Get all emails")
     @Parameter(name = "sort", schema = @Schema(type = "string", defaultValue = "emailId"))
     public ResponseEntity<Page> listar(@PageableDefault(size= 10) Pageable pageable) {
         var page = emailRespository.findAll(pageable).map(ListEmailDTO::new);
