@@ -11,7 +11,7 @@ SOLID principles and some design patterns, such as the Decorator pattern in the 
 This guide will provide instructions on how to configure and run the API locally using Docker and Swagger.
 
 1. **Clone the Repository:**    
-   - Clone your API repository to your local environment.
+   - Clone the API repository to your local environment.
    https://github.com/GabrielGiacometti/PaymentRest.git  
 
 2. **Run the Docker Container:**        
