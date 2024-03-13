@@ -19,9 +19,9 @@ This guide will provide instructions on how to configure and run the API locally
    docker run -p 3308:3306 --name mysqldb -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=paymentapi -e MYSQL_USER=sa -e MYSQL_PASSWORD=1234 -d mysql:5.7
 
 3. **Swagger Setup and Usage:**  
-   -*Access Swagger UI*: Open http://localhost:8080/swagger-ui/index.html in your browser to explore and interact with your API.  
-   -*Explore Endpoints*: Discover requests such as "Save Transactions," "Detail Transaction," "Detail User," "List Users," "Save User," and "List Emails."  
-   *Test Functionality*: Utilize Swagger's "Try it out" feature to send requests directly from the UI and observe responses.  
+   - *Access Swagger UI*: Open http://localhost:8080/swagger-ui/index.html in your browser to explore and interact with your API.  
+   - *Explore Endpoints*: Discover requests such as "Save Transactions," "Detail Transaction," "Detail User," "List Users," "Save User," and "List Emails."  
+   - *Test Functionality*: Utilize Swagger's "Try it out" feature to send requests directly from the UI and observe responses.  
    
 
 
