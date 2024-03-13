@@ -10,19 +10,18 @@ SOLID principles and some design patterns, such as the Decorator pattern in the 
 
 This guide will provide instructions on how to configure and run the API locally using Docker and Swagger.
 
-1. **Clone the Repository:**
-   Clone your API repository to your local environment.
-   https://github.com/GabrielGiacometti/PaymentRest.git
+1. **Clone the Repository:**  
+   Clone your API repository to your local environment.  
+   https://github.com/GabrielGiacometti/PaymentRest.git  
 
-2. **Run the Docker Container:**
-   Execute the newly created Docker container.
-   
+2. **Run the Docker Container:**  
+   Execute the newly created Docker container.  
    docker run -p 3308:3306 --name mysqldb -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_DATABASE=paymentapi -e MYSQL_USER=sa -e MYSQL_PASSWORD=1234 -d mysql:5.7
 
-3. **Swagger Setup and Usage:**
-    **Access Swagger UI**: Open http://localhost:8080/swagger-ui/index.html in your browser to explore and interact with your API.  
-   **Explore Endpoints**: Discover requests such as "Save Transactions," "Detail Transaction," "Detail User," "List Users," "Save User," and "List Emails."  
-   **Test Functionality**: Utilize Swagger's "Try it out" feature to send requests directly from the UI and observe responses.  
+3. **Swagger Setup and Usage:**  
+    *Access Swagger UI*: Open http://localhost:8080/swagger-ui/index.html in your browser to explore and interact with your API.  
+   *Explore Endpoints*: Discover requests such as "Save Transactions," "Detail Transaction," "Detail User," "List Users," "Save User," and "List Emails."  
+   *Test Functionality*: Utilize Swagger's "Try it out" feature to send requests directly from the UI and observe responses.  
    
 
 
